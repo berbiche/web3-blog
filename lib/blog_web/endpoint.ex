@@ -1,7 +1,7 @@
 defmodule BlogWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :blog
 
-  socket "/socket", BlogWeb.UserSocket
+  # socket "/socket", BlogWeb.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -36,7 +36,8 @@ defmodule BlogWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_blog_key",
-    signing_salt: "p0LNq7MJ"
+    signing_salt: "p0LNq7MJ",
+    encryption_salt: "p12as!3j$*"
 
   plug BlogWeb.Router
 
