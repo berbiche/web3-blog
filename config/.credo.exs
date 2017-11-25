@@ -4,7 +4,7 @@
       name: "default",
 
       files: %{
-        included: ["lib/", "src/", "web/", "apps/"],
+        included: ["lib/", "src/"],
         excluded: []
       },
 
@@ -80,7 +80,7 @@
         # Controversial and experimental checks (opt-in, just remove `, false`)
         #
         {Credo.Check.Refactor.ABCSize, false},
-        {Credo.Check.Refactor.AppendSingleItem, true},
+        {Credo.Check.Refactor.AppendSingleItem},
         {Credo.Check.Refactor.VariableRebinding, false},
         {Credo.Check.Warning.MapGetUnsafePass, false},
         {Credo.Check.Consistency.MultiAliasImportRequireUse, false},
