@@ -1,5 +1,23 @@
 {
     "emmet.includeLanguages": {
         "HTML (Eex)": "html"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "deps": true,
+        ".elixir_ls": true,
+        "_build": true
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "deps": true,
+        ".elixir_ls": true,
+        "_build": true
     }
 }
