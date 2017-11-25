@@ -14,10 +14,6 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            },
-            "presentation": {
-                "reveal": "silent",
-                "panel": "dedicated"
             }
         },
         {
@@ -31,9 +27,7 @@
                 "phx.server"
             ],
             "presentation": {
-                "echo": true,
                 "reveal": "silent",
-                "focus": false,
                 "panel": "dedicated"
             }
         },
@@ -51,15 +45,46 @@
             "command": "mix",
             "args": [
                 "credo",
-                "--strict"
+                "--all-priorities",
+                "--format=flycheck"
             ],
             "group": "test",
             "presentation": {
-                "echo": true,
-                "reveal": "silent",
-                "focus": false,
-                "panel": "dedicated"
-            }
+                "echo": false,
+                "reveal": "never",
+                "panel": "shared"
+            },
+            "problemMatcher": [
+                {
+                    "applyTo": "allDocuments",
+                    "fileLocation": ["relative", "${workspaceFolder}"],
+                    "severity": "info",
+                    "pattern":[
+                        {
+                            "regexp": "^(.+):(\\d+:\\d+):\\s*(?:[cC]|[rR]|[dD]):\\s*(.*)$",
+                            "file": 1,
+                            "location": 2,
+                            // "line": 2,
+                            // "column": 3,
+                            "message": 3
+                        }
+                    ]
+                },
+                {
+                    "applyTo": "allDocuments",
+                    "fileLocation": ["relative", "${workspaceFolder}"],
+                    "severity": "warning",
+                    "pattern":[
+                        {
+                            "regexp": "^(.+):(\\d+:\\d+):\\s*(?:[wW]):\\s*(.*)$",
+                            "file": 1,
+                            "location": 2,
+                            "message": 3
+                        }
+                    ]
+                }
+
+            ]
         }
     ]
 }
