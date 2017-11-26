@@ -1,3 +1,3 @@
-defmodule BlogWeb.PageView do
+defmodule BlogWeb.RootView do
   use BlogWeb, :view
 end

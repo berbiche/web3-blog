@@ -21,6 +21,7 @@ defmodule BlogWeb do
     quote do
       use Phoenix.Controller, namespace: BlogWeb
       import Plug.Conn
+      import Ecto.Query, only: [from: 2, select: 2]
       import BlogWeb.Router.Helpers
       import BlogWeb.Gettext
     end
@@ -32,7 +33,11 @@ defmodule BlogWeb do
                         namespace: BlogWeb
 
       # Import convenience functions from controllers
-      import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
+      import Phoenix.Controller, only: [
+        get_csrf_token: 0,
+        protect_from_forgery: 2,
+        current_path: 1
+      ]
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML

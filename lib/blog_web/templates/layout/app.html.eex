@@ -1,35 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Blog">
+  <meta name="author" content="Nicolas Berbiche">
 
-    <title>Hello Blog!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-  </head>
+  <title>Blog de Nicolas Berbiche</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulmaswatch/0.5.2/journal/bulmaswatch.min.css">
+  <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+</head>
 
-  <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
+<body>
+  <div class="columns">
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <div class="column is-3 is-gray">
+      <aside class="menu section" id="sidebar" role="navigation">
+        <h1>Blog de Nicolas Berbiche</h1>
 
-      <main role="main">
+        <ul class="menu-list">
+          <%= nav_item path: &root_path/2, conn: @conn, action: :index, text: "Accueil" %>
+          <%= nav_item path: &post_path/2, conn: @conn, action: :index, text: "Articles" %>
+          <%= nav_item path: &root_path/2, conn: @conn, action: :apropos, text: "Apropos" %>
+        </ul>
+      </aside>
+    </div>
+
+    <div class="column">
+      <section class="section">
         <%= render @view_module, @view_template, assigns %>
-      </main>
+      </section>
+    </div>
 
-    </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-  </body>
+  </div>
+</body>
 </html>

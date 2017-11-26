@@ -1,0 +1,6 @@
+<li>
+    <a href="<%= @path.(@conn, @action) %>"
+    class="<%= if @path.(@conn, @action) === current_path(@conn), do: "is-active" %>">
+        <%= @text %>
+    </a>
+</li>

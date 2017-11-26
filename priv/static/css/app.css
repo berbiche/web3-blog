@@ -1,0 +1,28 @@
+.is-gray {
+  background-color: #747474;
+}
+
+html {
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  height: 100%;
+  overflow: auto;
+}
+
+body, body > .columns {
+  /* full height sidebar */
+  min-height: 100vh;
+}
+
+body > div.columns {
+  /* remove the margin at the bottom */
+  margin: 0 !important;
+}
+
+#sidebar {
+  /* make the menu stay at the same place in the page */
+  position: fixed
+}
