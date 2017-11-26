@@ -1,1 +1,12 @@
-<h1>Post</h1>
+<% #Display the list of posts %>
+<%= for post <- @posts do %>
+<div class="content">
+    <h2><%= post.title %></h2>
+    <p>
+        <span>Par: <%= post.author %></span>
+        <br>
+        <span>Écrit le <%= Date.to_string(post.date) %></span>
+    </p>
+</div>
+<hr>
+<% end %>
