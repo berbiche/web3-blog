@@ -17,7 +17,7 @@ defmodule BlogWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", RootController, :index
-    # get "/apropos",
+    get "/apropos", RootController, :apropos
     resources "/article", PostController
   end
 
