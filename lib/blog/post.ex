@@ -13,9 +13,11 @@ defmodule Blog.Post do
         field :author, :string
         field :content, :string
         field :date, :naive_datetime
+
+        timestamps()
     end
 
-    def changeset(post, params \\ %{}) do
+    def changeset(%Post{} = post, params \\ %{}) do
         post
         |> cast(params, [:title, :author, :content])
         |> validate_required([:author])
