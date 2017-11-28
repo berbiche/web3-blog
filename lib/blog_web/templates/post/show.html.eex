@@ -1,0 +1,12 @@
+<div class="content">
+    <h2><%= @post.title %></h2>
+    <p>
+        <%= content_tag :span, "Par: " <> @post.author %>
+        <br>
+        <%= content_tag :span, "Écrit le: " <> Date.to_string(@post.date) %>
+    </p>
+    <%= content_tag :p, raw(@post.content) %>
+</div>
+
+<span><%= link "Éditer", to: post_path(@conn, :edit, @post), class: "button" %></span>
+<span><%= link "Retour", to: post_path(@conn, :index), class: "button" %></span>

@@ -18,7 +18,7 @@ defmodule BlogWeb.Router do
 
     get "/", RootController, :index
     get "/apropos", RootController, :apropos
-    resources "/article", PostController
+    resources "/article", PostController, param: "name"
   end
 
   # Other scopes may use custom stacks.
