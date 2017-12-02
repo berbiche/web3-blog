@@ -24,10 +24,12 @@ defmodule BlogWeb.PostController do
     case Post.create(post_params) do
       {:ok, post} ->
         conn
-        |> put_flash(:info, "Post created successfully.")
+        |> put_success_flash(gettext "Post created successfully.")
         |> redirect(to: post_path(conn, :show, post))
       {:error, %Ecto.Changeset{} = changeset} ->
-        render conn, "new.html", changeset: changeset
+        conn
+        |> put_error_flash(gettext "Post could not be created, fix all errors.")
+        |> render("new.html", changeset: changeset)
     end
   end
 
@@ -43,19 +45,38 @@ defmodule BlogWeb.PostController do
     case Post.update(post, post_params) do
       {:ok, post} ->
         conn
-        |> put_flash(:info, "Post updated successfully.")
+        |> put_success_flash(gettext("Post updated successfully."))
         |> redirect(to: post_path(conn, :show, post))
       {:error, %Ecto.Changeset{} = changeset} ->
-        render conn, "edit.html", post: post, changeset: changeset
+        conn
+        |> put_error_flash(gettext("Post could not be updated, fix all errors."))
+        |> render("edit.html", post: post, changeset: changeset)
     end
   end
 
   def delete(conn, %{"name" => name}) do
     post = Post.get!(name)
-    {:ok, _post} = Post.delete(post)
+    case Post.delete(post) do
+      {:ok, _} ->
+        conn
+        |> put_success_flash(gettext "Post deleted successfully.")
+        |> redirect(to: post_path(conn, :index))
+      {:error, _} ->
+        conn
+        |> put_error_flash(gettext "Post could not be deleted, try again.")
+        |> redirect(to: post_path(conn, :index))
+    end
+  end
 
+  defp put_error_flash(conn, message) do
     conn
-    |> put_flash(:info, "Post deleted successfully.")
-    |> redirect(to: post_path(conn, :index))
+    |> put_flash(:status, :error)
+    |> put_flash(:message, message)
+  end
+
+  defp put_success_flash(conn, message) do
+    conn
+    |> put_flash(:status, :ok)
+    |> put_flash(:message, message)
   end
 end

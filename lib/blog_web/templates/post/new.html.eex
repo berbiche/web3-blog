@@ -1,5 +1,8 @@
-<h2>New Post</h2>
+<h1 class="title"><%= gettext "New Post" %></h1>
 
-<%= render "form.html", Map.put(assigns, :action, post_path(@conn, :create)) %>
+<%= render "form.html",
+    assigns
+    |> Map.put(:action, post_path(@conn, :create))
+    |> Map.put(:changeset, @changeset) %>
 
-<span><%= link "Back", to: post_path(@conn, :index) %></span>
+<span><%= link gettext("Back"), to: post_path(@conn, :index), class: "button" %></span>

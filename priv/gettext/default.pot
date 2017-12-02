@@ -1,0 +1,81 @@
+## This file is a PO Template file.
+##
+## `msgid`s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## translations that can't be statically extracted.
+##
+## Run `mix gettext.extract` to bring this file up to
+## date. Leave `msgstr`s empty as changing them here as no
+## effect: edit them in PO (`.po`) files instead.
+msgid ""
+msgstr ""
+
+#: lib/blog_web/templates/post/form.html.eex:48
+msgid "Submit"
+msgstr ""
+
+#: lib/blog_web/templates/post/edit.html.eex:5
+#: lib/blog_web/templates/post/new.html.eex:8
+#: lib/blog_web/templates/post/show.html.eex:15
+msgid "Back"
+msgstr ""
+
+#: lib/blog_web/controllers/post_controller.ex:66
+msgid "Post could not be deleted, try again."
+msgstr ""
+
+#: lib/blog_web/controllers/post_controller.ex:62
+msgid "Post deleted successfully."
+msgstr ""
+
+#: lib/blog_web/controllers/post_controller.ex:31
+msgid "Post could not be created, fix all errors."
+msgstr ""
+
+#: lib/blog_web/controllers/post_controller.ex:52
+msgid "Post could not be updated, fix all errors."
+msgstr ""
+
+#: lib/blog_web/controllers/post_controller.ex:27
+msgid "Post created successfully."
+msgstr ""
+
+#: lib/blog_web/controllers/post_controller.ex:48
+msgid "Post updated successfully."
+msgstr ""
+
+#: lib/blog_web/templates/post/show.html.eex:20
+msgid "Edit"
+msgstr ""
+
+#: lib/blog_web/templates/layout/app.html.eex:42
+msgid "Error"
+msgstr ""
+
+#: lib/blog_web/templates/layout/app.html.eex:38
+msgid "Success"
+msgstr ""
+
+#: lib/blog_web/templates/post/index.html.eex:2
+msgid "Create"
+msgstr ""
+
+#: lib/blog_web/templates/post/show.html.eex:25
+msgid "Delete"
+msgstr ""
+
+#: lib/blog_web/templates/post/new.html.eex:1
+msgid "New Post"
+msgstr ""
+
+#: lib/blog_web/templates/post/form.html.eex:44
+msgid "Post content"
+msgstr ""
+
+#: lib/blog_web/templates/post/form.html.eex:19
+msgid "Post title"
+msgstr ""
+
+#: lib/blog_web/templates/post/form.html.eex:26
+msgid "Your name"
+msgstr ""

@@ -36,7 +36,8 @@ defmodule BlogWeb do
       import Phoenix.Controller, only: [
         get_csrf_token: 0,
         protect_from_forgery: 2,
-        current_path: 1
+        current_path: 1,
+        get_flash: 2
       ]
 
       # Use all HTML functionality (forms, tags, etc)

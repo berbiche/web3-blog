@@ -5,8 +5,27 @@
         <br>
         <%= content_tag :span, "Écrit le: " <> Date.to_string(@post.date) %>
     </p>
+    <hr>
     <%= content_tag :p, raw(@post.content) %>
 </div>
+<hr>
 
-<span><%= link "Éditer", to: post_path(@conn, :edit, @post), class: "button" %></span>
-<span><%= link "Retour", to: post_path(@conn, :index), class: "button" %></span>
+<div class="field is-grouped">
+  <p class="control">
+    <%= link gettext("Back"),
+             to: post_path(@conn, :index),
+             class: "button is-small" %>
+  </p>
+  <p class="control">
+    <%= link gettext("Edit"),
+             to: post_path(@conn, :edit, @post),
+             class: "button is-primary is-small" %>
+  </p>
+  <p class="control">
+    <%= link gettext("Delete"),
+             to: post_path(@conn, :delete, @post.title),
+             class: "button is-danger is-small",
+             "data-method": :delete,
+             "data-csrf": get_csrf_token() %>
+  </p>
+</div>

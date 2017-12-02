@@ -1,11 +1,49 @@
 <%= form_for @changeset, @action, fn f -> %>
+
   <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, quelque chose est survenu! Lire les erreurs en-dessous.</p>
+    <div class="notification">
+      <button type="button" class="delete"></button>
+      <%= for {key, msg} <- @changeset.errors do %>
+        <%= error_tag f, key, humanize(key) <> " " %>
+      <% end %>
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+  <div class="content">
+
+    <%= if @changeset.action !== post_path(@conn, :edit, "") do %>
+      <div class="field">
+        <%= label f, :title, class: "label" %>
+
+        <div class="control">
+          <%= text_input f, :title, placeholder: gettext("Post title"), class: "input" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= label f, :author, class: "label" %>
+        <div class="control">
+          <%= text_input f, :author, placeholder: gettext("Your name") %>
+        </div>
+      </div>
+
+    <% else %>
+      <%= if false do %>
+      <h2><%= input_value f, :title %></h2>
+      <p>
+          <%= content_tag :span, "Par: " <> input_value(f, :author) %>
+          <br>
+          <%= content_tag :span, "Écrit le: " <> Date.to_string(input_value(f, :date)) %>
+      </p>
+    <% end %>
+    <% end %>
+    changeset: <%= @changeset.action %>.
+
+    <div class="field">
+      <%= label f, :content, class: "label" %>
+      <%= textarea f, :content, class: "textarea", rows: 20, placeholder: gettext("Post content") %>
+    </div>
   </div>
+
+  <%= submit gettext("Submit"), class: "button is-primary" %>
 <% end %>

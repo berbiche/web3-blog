@@ -1,3 +1,8 @@
+<% #Display the link to create a new post %>
+<%= link gettext("Create"),
+         to: post_path(@conn, :new, %{}),
+         class: "button is-pulled-right" %>
+
 <% #Display the list of posts %>
 <%= for post <- @posts do %>
 <div class="content">

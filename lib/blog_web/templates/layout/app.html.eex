@@ -30,10 +30,31 @@
 
     <div class="column">
       <section class="section">
+
+        <%= if get_flash(@conn, :status) do %>
+          <%= if :ok == get_flash(@conn, :status) do %>
+            <article class="article is-success">
+              <div class="message-header">
+                <p><%= gettext "Success" %></p>
+          <% else %>
+            <article class="article is-danger">
+              <div class="message-header">
+                <p><%= gettext "Error" %></p>
+          <% end %>
+              <button class="delete" aria-label="delete"></button>
+            </div>
+
+            <%= content_tag :div, get_flash(@conn, :message), class: "message-body" %>
+          </article>
+        <% end %>
+
         <%= render @view_module, @view_template, assigns %>
+
       </section>
     </div>
 
   </div>
+
+  <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
 </body>
 </html>
